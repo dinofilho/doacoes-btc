@@ -10,7 +10,7 @@
       padding: 0;
       background-color: #111;
       color: #f0f0f0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -21,11 +21,12 @@
 
     h1 {
       color: #00ff88;
+      margin-bottom: 10px;
     }
 
     p {
       max-width: 600px;
-      margin: 10px auto;
+      margin: 10px 20px;
       font-size: 1.1em;
     }
 
@@ -36,6 +37,7 @@
       margin: 15px 0;
       font-family: monospace;
       word-break: break-all;
+      font-size: 1em;
     }
 
     button {
@@ -46,7 +48,7 @@
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin: 10px;
     }
 
     button:hover {
@@ -67,6 +69,33 @@
       font-size: 0.9em;
       display: none;
     }
+
+    .social {
+      margin: 20px 0;
+    }
+
+    .social a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    .social a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #666;
+    }
+
+    .contador {
+      margin-top: 20px;
+      color: #ccc;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
@@ -81,13 +110,28 @@
 
   <img src="https://api.qrserver.com/v1/create-qr-code/?data=bc1qqv5caf75zuqxuaq3cjf2p9s7n4x67sv46xnm5a&size=200x200" alt="QR Code Bitcoin">
 
+  <div class="social">
+    <p>Compartilhe:</p>
+    <a href="https://wa.me/?text=Ajude%20esse%20projeto%20de%20pentest%20ético%20com%20uma%20doação:%20https://bright-sawine-6938bb.netlify.app" target="_blank">📲 WhatsApp</a>
+    <a href="https://twitter.com/intent/tweet?text=Apoie%20o%20laboratório%20de%20pentest%20ético%20com%20uma%20doação:%20https://bright-sawine-6938bb.netlify.app" target="_blank">🐦 X (Twitter)</a>
+  </div>
+
+  <div class="contador">
+    Visitantes: <img src="https://contador.digitalgratis.com/numerocv/1A1A1A/00FF88/000000/3/0/brightbtc" alt="Contador de visitas">
+  </div>
+
+  <footer>
+    © 2025 - Criado por dinofilho • <a href="https://github.com/dinofilho/doacoes-btc" style="color:#00ff88;">GitHub</a>
+  </footer>
+
   <script>
     function copiarCarteira() {
       const texto = document.getElementById("wallet").innerText;
       navigator.clipboard.writeText(texto).then(() => {
-        document.getElementById("mensagem").style.display = "block";
+        const msg = document.getElementById("mensagem");
+        msg.style.display = "block";
         setTimeout(() => {
-          document.getElementById("mensagem").style.display = "none";
+          msg.style.display = "none";
         }, 2000);
       });
     }
