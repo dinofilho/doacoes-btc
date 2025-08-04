@@ -1,68 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajude o Laboratório Ético</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f0f0f;
-            color: #f0f0f0;
-            text-align: center;
-            padding: 40px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background-color: #1c1c1c;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #00ff99;
-        }
-        .address {
-            font-size: 1.2em;
-            word-break: break-all;
-            background-color: #2c2c2c;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        img {
-            margin-top: 10px;
-            width: 250px;
-            height: 250px;
-        }
-        button {
-            background-color: #00ff99;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #00cc77;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Doações BTC - Pentest Ético</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      justify-content: center;
+    }
+
+    h1 {
+      color: #00ff88;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 10px auto;
+      font-size: 1.1em;
+    }
+
+    .wallet {
+      background: #222;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-family: monospace;
+      word-break: break-all;
+    }
+
+    button {
+      background: #00ff88;
+      border: none;
+      color: #111;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background: #00cc66;
+    }
+
+    img {
+      margin-top: 20px;
+      width: 200px;
+      height: 200px;
+      border: 2px solid #00ff88;
+      border-radius: 10px;
+    }
+
+    .copiado {
+      margin-top: 10px;
+      color: #00ff88;
+      font-size: 0.9em;
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Laboratório de Pentest Ético</h1>
-        <p>Ajude a manter nosso projeto de segurança digital, automação e pesquisa open source.</p>
-        <p>Faça uma doação via Bitcoin para a carteira abaixo:</p>
-        <div class="address" id="btcAddress">bc1qqv5caf75zuqxuaq3cjf2p9s7n4x67sv46xnm5a</div>
-        <button onclick="copyAddress()">Copiar Endereço</button>
-        <br>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=bc1qqv5caf75zuqxuaq3cjf2p9s7n4x67sv46xnm5a" alt="QR Code Bitcoin">
-    </div>
-    <script>
-        function copyAddress() {
-            const address = document.getElementById("btcAddress").innerText;
-            navigator.clipboard.writeText(address)
-                .then(() => alert("Endereço copiado para a área de transferência!"))
-                .catch(err => alert("Erro ao copiar: " + err));
-        }
-    </script>
+
+  <h1>Laboratório de Pentest Ético</h1>
+  <p>Você pode apoiar nosso projeto fazendo uma doação em Bitcoin. Cada contribuição ajuda a manter nossos testes, infraestrutura e pesquisas em segurança digital.</p>
+
+  <div class="wallet" id="wallet">bc1qqv5caf75zuqxuaq3cjf2p9s7n4x67sv46xnm5a</div>
+
+  <button onclick="copiarCarteira()">📋 Copiar carteira</button>
+  <div class="copiado" id="mensagem">Carteira copiada com sucesso!</div>
+
+  <img src="https://api.qrserver.com/v1/create-qr-code/?data=bc1qqv5caf75zuqxuaq3cjf2p9s7n4x67sv46xnm5a&size=200x200" alt="QR Code Bitcoin">
+
+  <script>
+    function copiarCarteira() {
+      const texto = document.getElementById("wallet").innerText;
+      navigator.clipboard.writeText(texto).then(() => {
+        document.getElementById("mensagem").style.display = "block";
+        setTimeout(() => {
+          document.getElementById("mensagem").style.display = "none";
+        }, 2000);
+      });
+    }
+  </script>
+
 </body>
 </html>
